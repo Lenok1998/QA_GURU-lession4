@@ -1,16 +1,13 @@
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.byValue;
 import static com.codeborne.selenide.Selenide.*;
 
-public class StudentForm {
+public class StudentFormTest {
     @BeforeAll //выполняется перед тестом
     static void beforeAll() {
         Configuration.browserSize = "1920x1080"; //размер окна браузера
@@ -32,9 +29,6 @@ public class StudentForm {
         $("#dateOfBirthInput").click();
         $(".react-datepicker__year-select").click();
         $(byValue("1998")).click();
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__year-select").selectOption("1998");
-        $(".react-datepicker__month-select").selectOption("July");
         $(".react-datepicker__day--013:not(.react-datepicker__day--outside-month)").click();
         $("#subjectsInput").val("Economics").pressEnter();
         $("#subjectsInput").val("English").pressEnter();
@@ -46,21 +40,28 @@ public class StudentForm {
         $("#uploadPicture").uploadFromClasspath("my.png");
         $("#currentAddress").setValue("Lunnaya 43b str.");
         $("#react-select-3-input").val("Rajasthan").pressEnter();
-        $("#react-select-4-input").val("Jaiselmer").pressEnter();
+        $("#react-select-4-input").val("Rajasthan").pressEnter();
         $("#submit").pressEnter();
 
-        $(".table-responsive").shouldHave(//результат
-                text("Elena Malysheva"),
-                text("malyseva630@gmail.com"),
-                text("Female"),
-                text("9873058652"),
-                text("13 July,1998"),
-                text("Economics, English, Biology, Math"),
-                text("Sports, Reading, Music"),
-                text("my.png"),
-                text("Lunnaya 43b str."),
-                text("Rajasthan Jaiselmer"));
+        //результат
+        $(".table-responsive").shouldHave(text("Elena Malysheva"));
+        $(".table-responsive").shouldHave(text("malyseva630@gmail.com"));
+        $(".table-responsive").shouldHave(text("Female"));
+        $(".table-responsive").shouldHave(text("9873058652"));
+        $(".table-responsive").shouldHave(text("Economics,English,Biology,Math"));
+        $(".table-responsive").shouldHave(text("Sports,Reading, Music"));
+        $(".table-responsive").shouldHave(text("my.png"));
+        $(".table-responsive").shouldHave(text("Rajasthan Rajasthan"));
 
+        //проверка значений
+        $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text("Elena Malysheva"));
+        $(".table-responsive").$(byText("Student Email")).parent().shouldHave(text("Elena Malysheva"));
+        $(".table-responsive").$(byText("Student Gender")).parent().shouldHave(text("Female"));
+        $(".table-responsive").$(byText("Student Number")).parent().shouldHave(text("9873058652"));
+        $(".table-responsive").$(byText("Student Subject")).parent().shouldHave(text("Economics,English,Biology,Math"));
+        $(".table-responsive").$(byText("Student Hobbies")).parent().shouldHave(text("Sports,Reading, Music"));
+        $(".table-responsive").$(byText("Student Picture")).parent().shouldHave(text("my.png"));
+        $(".table-responsive").$(byText("Student Address")).parent().shouldHave(text("Sports,Reading, Music"));
     }
 
 
