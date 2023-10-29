@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.byValue;
 import static com.codeborne.selenide.Selenide.*;
 
-public class StudentFormTest {
+public class FormStudentTest {
     @BeforeAll //выполняется перед тестом
     static void beforeAll() {
         Configuration.browserSize = "1920x1080"; //размер окна браузера
@@ -26,9 +26,6 @@ public class StudentFormTest {
         $("#userEmail").setValue("malyseva630@gmail.com");
         $("#genterWrapper").$(byText("Female")).click();
         $("#userNumber").setValue("9873058652");
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__year-select").click();
-        $(byValue("1998")).click();
         $("#dateOfBirthInput").click();
         $(".react-datepicker__year-select").selectOption("1998");
         $(".react-datepicker__month-select").selectOption("July");
@@ -49,14 +46,14 @@ public class StudentFormTest {
         //проверка значений
         $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text("Elena Malysheva"));
         $(".table-responsive").$(byText("Student Email")).parent().shouldHave(text("malyseva630@gmail.com"));
-        $(".table-responsive").$(byText("Student Gender")).parent().shouldHave(text("Female"));
-        $(".table-responsive").$(byText("Student Number")).parent().shouldHave(text("9873058652"));
-        $(".table-responsive").$(byText("Student Date")).parent().shouldHave(text("13 July 1998"));
-        $(".table-responsive").$(byText("Student Subject")).parent().shouldHave(text("Economics, English, Biology, Math"));
-        $(".table-responsive").$(byText("Student Hobbies")).parent().shouldHave(text("Sports, Reading, Music"));
-        $(".table-responsive").$(byText("Student Picture")).parent().shouldHave(text("my.png"));
-        $(".table-responsive").$(byText("Student Address")).parent().shouldHave(text("Lunnaya 43b str."));
-        $(".table-responsive").$(byText("Student State")).parent().shouldHave(text("Rajasthan Jaipur"));
+        $(".table-responsive").$(byText("Gender")).parent().shouldHave(text("Female"));
+        $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text("9873058652"));
+        $(".table-responsive").$(byText("Date of Birth")).parent().shouldHave(text("13 July 1998"));
+        $(".table-responsive").$(byText("Subject")).parent().shouldHave(text("Economics, English, Biology, Math"));
+        $(".table-responsive").$(byText("Hobbies")).parent().shouldHave(text("Sports, Reading, Music"));
+        $(".table-responsive").$(byText("Picture")).parent().shouldHave(text("my.png"));
+        $(".table-responsive").$(byText("Address")).parent().shouldHave(text("Lunnaya 43b str."));
+        $(".table-responsive").$(byText("State and City")).parent().shouldHave(text("Rajasthan Jaipur"));
 
     }
 
