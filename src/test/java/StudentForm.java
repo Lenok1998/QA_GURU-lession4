@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.byValue;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -26,7 +27,7 @@ public class StudentForm {
         $("#firstName").setValue("Elena");// заполняем форму данными
         $("#lastName").setValue("Malysheva");
         $("#userEmail").setValue("malyseva630@gmail.com");
-        $("[for='gender-radio-2']").click();
+        $("#genterWrapper").$(byText("Female")).click();
         $("#userNumber").setValue("9873058652");
         $("#dateOfBirthInput").click();
         $(".react-datepicker__year-select").click();
@@ -39,9 +40,9 @@ public class StudentForm {
         $("#subjectsInput").val("English").pressEnter();
         $("#subjectsInput").val("Biology").pressEnter();
         $("#subjectsInput").val("Math").pressEnter();
-        $("[for='hobbies-checkbox-1']").click();
-        $("[for='hobbies-checkbox-2']").click();
-        $("[for='hobbies-checkbox-3']").click();
+        $("#hobbiesWrapper").$(byText("Sports")).click();
+        $("#hobbiesWrapper").$(byText("Reading")).click();
+        $("#hobbiesWrapper").$(byText("Music")).click();
         $("#uploadPicture").uploadFromClasspath("my.png");
         $("#currentAddress").setValue("Lunnaya 43b str.");
         $("#react-select-3-input").val("Rajasthan").pressEnter();
