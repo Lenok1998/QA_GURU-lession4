@@ -1,4 +1,5 @@
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +18,7 @@ public class StudentForm {
     }
 
     @Test // метка теста
-    void StudentForm() {
+    void studentForm() {
 
         open("/automation-practice-form"); //открываем форму
         executeJavaScript("$('#fixedban').remove()"); //удаляем баннер
@@ -30,8 +31,10 @@ public class StudentForm {
         $("#dateOfBirthInput").click();
         $(".react-datepicker__year-select").click();
         $(byValue("1998")).click();
+        $("#dateOfBirthInput").click();
+        $(".react-datepicker__year-select").selectOption("1998");
         $(".react-datepicker__month-select").selectOption("July");
-        $("[aria-label='Choose Monday, July 13th, 1998']").click();
+        $(".react-datepicker__day--013:not(.react-datepicker__day--outside-month)").click();
         $("#subjectsInput").val("Economics").pressEnter();
         $("#subjectsInput").val("English").pressEnter();
         $("#subjectsInput").val("Biology").pressEnter();
@@ -39,14 +42,14 @@ public class StudentForm {
         $("[for='hobbies-checkbox-1']").click();
         $("[for='hobbies-checkbox-2']").click();
         $("[for='hobbies-checkbox-3']").click();
-        $("#uploadPicture").uploadFile(new File("src/test/pictures/my.png"));
+        $("#uploadPicture").uploadFromClasspath("my.png");
         $("#currentAddress").setValue("Lunnaya 43b str.");
         $("#react-select-3-input").val("Rajasthan").pressEnter();
         $("#react-select-4-input").val("Jaiselmer").pressEnter();
         $("#submit").pressEnter();
 
         $(".table-responsive").shouldHave(//результат
-                text("Malysheva Elena"),
+                text("Elena Malysheva"),
                 text("malyseva630@gmail.com"),
                 text("Female"),
                 text("9873058652"),
