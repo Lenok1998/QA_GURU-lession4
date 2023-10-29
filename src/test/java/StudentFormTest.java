@@ -29,6 +29,9 @@ public class StudentFormTest {
         $("#dateOfBirthInput").click();
         $(".react-datepicker__year-select").click();
         $(byValue("1998")).click();
+        $("#dateOfBirthInput").click();
+        $(".react-datepicker__year-select").selectOption("1998");
+        $(".react-datepicker__month-select").selectOption("July");
         $(".react-datepicker__day--013:not(.react-datepicker__day--outside-month)").click();
         $("#subjectsInput").val("Economics").pressEnter();
         $("#subjectsInput").val("English").pressEnter();
@@ -43,24 +46,14 @@ public class StudentFormTest {
         $("#react-select-4-input").val("Jaipur").pressEnter();
         $("#submit").pressEnter();
 
-        //результат
-        $(".table-responsive").shouldHave(text("Elena Malysheva"));
-        $(".table-responsive").shouldHave(text("malyseva630@gmail.com"));
-        $(".table-responsive").shouldHave(text("Female"));
-        $(".table-responsive").shouldHave(text("9873058652"));
-        $(".table-responsive").shouldHave(text("Economics,English,Biology,Math"));
-        $(".table-responsive").shouldHave(text("Sports,Reading, Music"));
-        $(".table-responsive").shouldHave(text("my.png"));
-        $(".table-responsive").shouldHave(text("Lunnaya 43b str."));
-        $(".table-responsive").shouldHave(text("Rajasthan Jaipur"));
-
         //проверка значений
         $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text("Elena Malysheva"));
-        $(".table-responsive").$(byText("Student Email")).parent().shouldHave(text("Elena Malysheva"));
+        $(".table-responsive").$(byText("Student Email")).parent().shouldHave(text("malyseva630@gmail.com"));
         $(".table-responsive").$(byText("Student Gender")).parent().shouldHave(text("Female"));
         $(".table-responsive").$(byText("Student Number")).parent().shouldHave(text("9873058652"));
-        $(".table-responsive").$(byText("Student Subject")).parent().shouldHave(text("Economics,English,Biology,Math"));
-        $(".table-responsive").$(byText("Student Hobbies")).parent().shouldHave(text("Sports,Reading, Music"));
+        $(".table-responsive").$(byText("Student Date")).parent().shouldHave(text("13 Yuly 1998"));
+        $(".table-responsive").$(byText("Student Subject")).parent().shouldHave(text("Economics, English, Biology, Math"));
+        $(".table-responsive").$(byText("Student Hobbies")).parent().shouldHave(text("Sports, Reading, Music"));
         $(".table-responsive").$(byText("Student Picture")).parent().shouldHave(text("my.png"));
         $(".table-responsive").$(byText("Student Address")).parent().shouldHave(text("Lunnaya 43b str."));
         $(".table-responsive").$(byText("Student State")).parent().shouldHave(text("Rajasthan Jaipur"));
