@@ -40,7 +40,7 @@ public class StudentFormTest {
         $("#uploadPicture").uploadFromClasspath("my.png");
         $("#currentAddress").setValue("Lunnaya 43b str.");
         $("#react-select-3-input").val("Rajasthan").pressEnter();
-        $("#react-select-4-input").val("Rajasthan").pressEnter();
+        $("#react-select-4-input").val("Jaipur").pressEnter();
         $("#submit").pressEnter();
 
         //результат
@@ -51,7 +51,8 @@ public class StudentFormTest {
         $(".table-responsive").shouldHave(text("Economics,English,Biology,Math"));
         $(".table-responsive").shouldHave(text("Sports,Reading, Music"));
         $(".table-responsive").shouldHave(text("my.png"));
-        $(".table-responsive").shouldHave(text("Rajasthan Rajasthan"));
+        $(".table-responsive").shouldHave(text("Lunnaya 43b str."));
+        $(".table-responsive").shouldHave(text("Rajasthan Jaipur"));
 
         //проверка значений
         $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text("Elena Malysheva"));
@@ -61,7 +62,9 @@ public class StudentFormTest {
         $(".table-responsive").$(byText("Student Subject")).parent().shouldHave(text("Economics,English,Biology,Math"));
         $(".table-responsive").$(byText("Student Hobbies")).parent().shouldHave(text("Sports,Reading, Music"));
         $(".table-responsive").$(byText("Student Picture")).parent().shouldHave(text("my.png"));
-        $(".table-responsive").$(byText("Student Address")).parent().shouldHave(text("Sports,Reading, Music"));
+        $(".table-responsive").$(byText("Student Address")).parent().shouldHave(text("Lunnaya 43b str."));
+        $(".table-responsive").$(byText("Student State")).parent().shouldHave(text("Rajasthan Jaipur"));
+
     }
 
 
