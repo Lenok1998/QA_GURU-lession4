@@ -48,8 +48,8 @@ public class FormStudentTest {
         $(".table-responsive").$(byText("Student Email")).parent().shouldHave(text("malyseva630@gmail.com"));
         $(".table-responsive").$(byText("Gender")).parent().shouldHave(text("Female"));
         $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text("9873058652"));
-        $(".table-responsive").$(byText("Date of Birth")).parent().shouldHave(text("13 July 1998"));
-        $(".table-responsive").$(byText("Subject")).parent().shouldHave(text("Economics, English, Biology, Math"));
+        $(".table-responsive").$(byText("Date of Birth")).parent().shouldHave(text("13 July, 1998"));
+        $(".table-responsive").$(byText("Subjects")).parent().shouldHave(text("Economics, English, Biology, Math"));
         $(".table-responsive").$(byText("Hobbies")).parent().shouldHave(text("Sports, Reading, Music"));
         $(".table-responsive").$(byText("Picture")).parent().shouldHave(text("my.png"));
         $(".table-responsive").$(byText("Address")).parent().shouldHave(text("Lunnaya 43b str."));
