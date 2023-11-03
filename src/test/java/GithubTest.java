@@ -1,9 +1,7 @@
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class GithubTest {
@@ -14,11 +12,9 @@ public class GithubTest {
         Configuration.pageLoadStrategy = "eager";  // шаблон selenide
     }
 
-    @Test //метка теста
-
+    @Test //метка тест
     void githubSearch() {
-
-        open("https://github.com/selenide/selenide"); //открываем ресурс
+        open("/selenide/selenide"); //открываем ресурс
         $("#wiki-tab").click(); //находим раздел Wiki, кликаем на него
         $("#wiki-pages-filter").setValue("Softassertions").pressEnter();//фильтруем по названию,жмём Enter
         $("[href='/selenide/selenide/wiki/SoftAssertions']").click();//находим гиперссылку, кликаем на неё
